@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import requestService from '../../../../services/request-service';
+import requestService from 'services/request-service';
 
 export const signInAction = createAsyncThunk(
 	'auth/signIn',

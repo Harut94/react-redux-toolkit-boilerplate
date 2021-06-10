@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/.idea
+
 /.pnp
 .pnp.js
 
@@ -11,6 +11,7 @@
 
 # production
 /build
+/.idea
 
 # misc
 .DS_Store
