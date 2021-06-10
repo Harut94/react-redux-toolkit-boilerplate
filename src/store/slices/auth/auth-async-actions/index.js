@@ -6,7 +6,6 @@ export const signInAction = createAsyncThunk(
 	// eslint-disable-next-line no-unused-vars
 	async (user, thunkAPI) => {
 		const response = await requestService.get('https://estatetest.ameriabank.am/v2/Locations');
-
 		return response;
 	}
 );
