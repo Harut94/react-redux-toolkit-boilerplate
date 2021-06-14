@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserHistory } from 'history';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { Router, Redirect, Route, Switch } from 'react-router-dom';
 import SignIn from 'pages/sign-in';
 
 const history = createBrowserHistory();
