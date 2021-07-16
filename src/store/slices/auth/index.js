@@ -1,9 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { signInAction } from './auth-async-actions';
 
 const initialState = {
 	token: '',
 };
+
+const moduleName = 'auth';
+const stateSelector = (state) => state[moduleName];
 
 const authSlice = createSlice({
 	name: 'auth',
@@ -19,6 +22,8 @@ const authSlice = createSlice({
 		});
 	},
 });
+
+export const tokenSelector = createSelector(stateSelector, (state) => state.token);
 
 export const { test } = authSlice.actions;
 

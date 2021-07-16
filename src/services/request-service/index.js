@@ -1,5 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
+import constants from '../settings/constants';
 
 class RequestService {
 	constructor() {
@@ -31,6 +32,13 @@ class RequestService {
 		return this.makeAPIRequest(url, options, 'PATCH');
 	};
 
+	createUrl = (arg) => {
+		if (Array.isArray(arg)) {
+			return [constants.API_URL, ...arg].join('/');
+		}
+		return arg;
+	};
+
 	makeAPIRequest = (url, options = {}, method) => {
 		return new Promise((resolve, reject) => {
 			if (this.source) {
@@ -43,8 +51,10 @@ class RequestService {
 
 			this.source = axios.CancelToken.source();
 
+			let _url = this.createUrl(url);
+
 			let fetch_options = {
-				url,
+				url: _url,
 				method,
 				headers: {
 					Accept: 'application/json',
