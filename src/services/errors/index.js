@@ -4,28 +4,26 @@ class Errors {
 	constructor(error, store) {
 		this.error = error;
 		this.store = store;
-		this.errorTypes = {
-			404: this.notFound,
-			401: this.unauthorized,
-		};
 	}
 
-	handleErrorType(error) {
-		const _error = this.errorTypes[error.status](error);
-		const errorMessage = `${error.status} ${_error}`;
-		toast.error(errorMessage, { toastId: Math.random() });
+	handleErrorType(errorStatus) {
+		switch (errorStatus) {
+			case 404:
+				return 'not found';
+			case 401:
+				return 'unauthorized';
+			default:
+				return 'sorry something went wrong';
+		}
 	}
 
 	errorHandler() {
-		this.handleErrorType(this.error);
-	}
-
-	notFound() {
-		return 'not found';
-	}
-
-	unauthorized() {
-		return 'unauthorized';
+		let errorMessage = this.error.message;
+		if (!this.error.message) {
+			const _error = this.handleErrorType(this.error.status);
+			errorMessage = `${this.error.status} ${_error}`;
+		}
+		toast.error(errorMessage);
 	}
 }
 

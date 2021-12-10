@@ -7,6 +7,8 @@ import * as yup from 'yup';
 import { signInAction } from 'store/slices/auth/auth-async-actions';
 //components
 import TextInput from '../../components/input';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
 	const dispatch = useDispatch();
@@ -41,6 +43,7 @@ const SignIn = () => {
 
 	return (
 		<div>
+			<button onClick={() => toast('Wow so easy!')}>test</button>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div style={{ marginTop: '5px ' }}></div>
 				<div>
