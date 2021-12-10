@@ -8,10 +8,7 @@ export const signInAction = createAsyncThunk(
 	async (user, thunkAPI) => {
 		const url = [constants.request_url.bookmaker, constants.request_url.all];
 
-		const response = await requestService.get({
-			localSource: true,
-			url,
-		});
+		const response = await requestService.get(url);
 		return response;
 	}
 );
